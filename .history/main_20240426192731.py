@@ -13,10 +13,6 @@ def startscript():
     kb.wait(';')
     checkforgreen()
 
-def automatedfishing():
-    
-
-
 
 def checkforgreen():
     fishing = False
@@ -27,7 +23,6 @@ def checkforgreen():
             if s.getpixel((i, j)) == barcolour:
                 fishing = True
                 automatedfishing()
-
         
 
 
