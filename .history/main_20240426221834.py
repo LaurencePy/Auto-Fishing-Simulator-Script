@@ -11,6 +11,13 @@ import time
 # top right (1620, 150)
 # bottom right (1620, 750)
 
+# Box for green:
+
+# top left (750, 775)
+# bottom left (750, 880)
+# top right (1150, 775)
+# bottom right (1150, 880)
+
 # Click indicator:
 # position check: (825, 823)
 
@@ -27,11 +34,7 @@ def checkforbubbles():
     while True:
         s = ag.screenshot()
         bubble_found = False
-
-        if kb.is_pressed(','):                                          # STOP HOTKEY
-            print("Stopping bubble checks...")
-            break
-
+        
         for i in range(300, 1620):
             for j in range(150, 750):
                 if s.getpixel((i, j)) == bubblecolour:
@@ -39,37 +42,37 @@ def checkforbubbles():
                     ag.click(button='left')
                     automatedfishing()
                     bubble_found = True
+                    time.sleep(3)  # Give some time before checking for more bubbles
                     break
             if bubble_found:
                 break
 
-        
+        if kb.is_pressed(','):
+            print("Stopping bubble checks...")
+            break
 
 def automatedfishing():
     positioncolour = (255, 255, 255)
-    barcolour = (83, 250, 83)
-    position = (877, 815)
-    print("Starting automated fishing...")
+    check_area = range(870, 880)  # Check a small horizontal range for the white bar
+
     while True:
-        s = ag.screenshot()
-        current_color = s.getpixel(position)
-        print(f"Checking color at {position}: {current_color}")
-        if kb.is_pressed(','):                                          # STOP HOTKEY
-            print("Stopping colour checks...")
+        found = False
+        for x in check_area:
+            s = ag.screenshot()
+            if s.getpixel((x, 823)) == positioncolour:
+                print("Pointer detected at:", x)
+                ag.click(button='left')
+                found = True
+                time.sleep(0.1)  # Slight delay to prevent overly rapid clicks
+                break  # Break after the first click to avoid multiple clicks per detection
+
+        if not found:
+            print("Bar no longer detected, stopping clicks...")
             break
-        if current_color == positioncolour:
-            print("White bar detected - clicking...")
-            ag.click(button='left')
-        elif current_color not in (positioncolour, barcolour):
-            time.sleep(2)
-            ag.click(button='left')
-            checkforbubbles()
 
-
-
+        time.sleep(0.5) 
 def startscript():
-    kb.wait(';')                                                        # START HOTKEY
-    ag.click(button='left')
+    kb.wait(';')
     checkforbubbles()
 
 def main():

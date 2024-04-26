@@ -11,6 +11,13 @@ import time
 # top right (1620, 150)
 # bottom right (1620, 750)
 
+# Box for green:
+
+# top left (750, 775)
+# bottom left (750, 880)
+# top right (1150, 775)
+# bottom right (1150, 880)
+
 # Click indicator:
 # position check: (825, 823)
 
@@ -28,48 +35,44 @@ def checkforbubbles():
         s = ag.screenshot()
         bubble_found = False
 
-        if kb.is_pressed(','):                                          # STOP HOTKEY
-            print("Stopping bubble checks...")
-            break
-
         for i in range(300, 1620):
             for j in range(150, 750):
                 if s.getpixel((i, j)) == bubblecolour:
                     print("Bubble found")
                     ag.click(button='left')
-                    automatedfishing()
+                    if checkforgreen():  # Check if green is there, and call automated fishing if true
+                        automatedfishing()
                     bubble_found = True
+                    time.sleep(3)  # Wait after a bubble is found and processed
                     break
             if bubble_found:
                 break
 
-        
+        if kb.is_pressed(','):
+            print("Stopping bubble checks...")
+            break
 
 def automatedfishing():
     positioncolour = (255, 255, 255)
+    
+    
+    s = ag.screenshot()
+    current_color = s.getpixel((870, 823))
+    if current_color == positioncolour:
+        ag.click(button='left')
+
+
+
+def checkforgreen():
     barcolour = (83, 250, 83)
-    position = (877, 815)
-    print("Starting automated fishing...")
-    while True:
-        s = ag.screenshot()
-        current_color = s.getpixel(position)
-        print(f"Checking color at {position}: {current_color}")
-        if kb.is_pressed(','):                                          # STOP HOTKEY
-            print("Stopping colour checks...")
-            break
-        if current_color == positioncolour:
-            print("White bar detected - clicking...")
-            ag.click(button='left')
-        elif current_color not in (positioncolour, barcolour):
-            time.sleep(2)
-            ag.click(button='left')
-            checkforbubbles()
-
-
+    s = ag.screenshot()
+    for i in range(750, 1150):
+        for j in range(775, 880):
+            if s.getpixel((i, j)) == barcolour:
+                automatedfishing()
 
 def startscript():
-    kb.wait(';')                                                        # START HOTKEY
-    ag.click(button='left')
+    kb.wait(';')
     checkforbubbles()
 
 def main():
@@ -81,3 +84,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

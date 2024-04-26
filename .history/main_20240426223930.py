@@ -27,11 +27,10 @@ def checkforbubbles():
     while True:
         s = ag.screenshot()
         bubble_found = False
-
-        if kb.is_pressed(','):                                          # STOP HOTKEY
+        if kb.is_pressed(','):
             print("Stopping bubble checks...")
             break
-
+        
         for i in range(300, 1620):
             for j in range(150, 750):
                 if s.getpixel((i, j)) == bubblecolour:
@@ -54,22 +53,20 @@ def automatedfishing():
         s = ag.screenshot()
         current_color = s.getpixel(position)
         print(f"Checking color at {position}: {current_color}")
-        if kb.is_pressed(','):                                          # STOP HOTKEY
+        if kb.is_pressed(','):
             print("Stopping colour checks...")
             break
         if current_color == positioncolour:
             print("White bar detected - clicking...")
             ag.click(button='left')
         elif current_color not in (positioncolour, barcolour):
-            time.sleep(2)
             ag.click(button='left')
             checkforbubbles()
 
 
 
 def startscript():
-    kb.wait(';')                                                        # START HOTKEY
-    ag.click(button='left')
+    kb.wait(';')
     checkforbubbles()
 
 def main():
