@@ -1,4 +1,4 @@
-An automatic fishing script for the [Roblox Fishing Simulator Game]([url](https://www.roblox.com/games/2866967438/MINIBOSS-Fishing-Simulator)) to learn how to use the pyautogui and pygetwindow libaries
+An automatic fishing script for the [Roblox Fishing Simulator Game](https://www.roblox.com/games/2866967438/MINIBOSS-Fishing-Simulator) to learn how to use the pyautogui and pygetwindow libaries
 
 
 Current hotkeys:
