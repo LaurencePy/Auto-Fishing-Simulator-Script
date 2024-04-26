@@ -14,7 +14,6 @@ def startscript():
     checkforgreen()
 
 def automatedfishing():
-    
 
 
 

@@ -14,8 +14,6 @@ def startscript():
     checkforgreen()
 
 def automatedfishing():
-    
-
 
 
 
@@ -24,14 +22,11 @@ def checkforgreen():
     fishing = False
     barcolour = (83, 250, 83)
     s = ag.screenshot()
-    for i in range(750, 1150):
-        for j in range(775, 880):
+    for i in range(s.width):
+        for j in range(s.height):
             if s.getpixel((i, j)) == barcolour:
-                #print(i,j)
                 fishing = True
                 automatedfishing()
-    return
-
 
 
 

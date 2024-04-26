@@ -13,8 +13,7 @@ def startscript():
     kb.wait(';')
     checkforgreen()
 
-def automatedfishing():
-    
+#def automatedfishing():
 
 
 
@@ -30,8 +29,6 @@ def checkforgreen():
                 #print(i,j)
                 fishing = True
                 automatedfishing()
-    return
-
 
 
 

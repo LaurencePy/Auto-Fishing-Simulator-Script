@@ -14,7 +14,6 @@ def startscript():
     checkforgreen()
 
 def automatedfishing():
-    
 
 
 
@@ -30,8 +29,6 @@ def checkforgreen():
                 #print(i,j)
                 fishing = True
                 automatedfishing()
-    return
-
 
 
 
