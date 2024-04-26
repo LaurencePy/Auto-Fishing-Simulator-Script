@@ -75,7 +75,6 @@ def checkforgreen():
 
 
 
-
 def main():
     gamewindow = selectwindow()
     if not gamewindow is None:

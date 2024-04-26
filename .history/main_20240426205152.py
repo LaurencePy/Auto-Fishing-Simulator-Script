@@ -51,6 +51,8 @@ def checkforbubbles():
             if s.getpixel((i, j)) == bubblecolour:
                 ag.click(button='left')
                 checkforgreen()
+            else:
+                checkforbubbles()
 
 
 def checkforgreen():

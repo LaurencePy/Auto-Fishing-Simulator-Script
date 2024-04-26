@@ -32,13 +32,13 @@ def selectwindow():
 
 def startscript():
     kb.wait(';')
-    checkforbubbles()
+    checkforgreen()
 
 def automatedfishing():
     
     positioncolour = (255, 255, 255)
     s = ag.screenshot()
-    if s.getpixel((870, 820)) == positioncolour:
+    if s.getpixel((825, 823)) == positioncolour:
         ag.click(button='left')
         
 
@@ -61,7 +61,6 @@ def checkforgreen():
             if s.getpixel((i, j)) == barcolour:
                 #print(i,j)
                 automatedfishing()
-
 
 
 
