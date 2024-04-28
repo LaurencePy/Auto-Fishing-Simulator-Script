@@ -12,11 +12,10 @@ def selectwindow():
 
 def recovery():
     print("Performing recovery operations...")
-    for i in range(5):
-        kb.press_and_release('1')
+    for i in range(4):
+        keyboard.press_and_release('1')
         time.sleep(0.5)
-    ag.click(button='left')
-    checkforbubbles()
+    startscript()
 
 def checkforbubbles():
     bubblecolour = (68, 252, 234)

@@ -12,7 +12,7 @@ def selectwindow():
 
 def recovery():
     print("Performing recovery operations...")
-    for i in range(5):
+    for i in range(4):
         kb.press_and_release('1')
         time.sleep(0.5)
     ag.click(button='left')

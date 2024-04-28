@@ -12,11 +12,9 @@ def selectwindow():
 
 def recovery():
     print("Performing recovery operations...")
-    for i in range(5):
-        kb.press_and_release('1')
-        time.sleep(0.5)
-    ag.click(button='left')
-    checkforbubbles()
+    for i in range(3):
+        keyboard.press_and_release('1')
+    startscript()
 
 def checkforbubbles():
     bubblecolour = (68, 252, 234)
@@ -30,7 +28,7 @@ def checkforbubbles():
             recovery()
             return
 
-        if kb.is_pressed(','):                                          # STOP HOTKEY
+        if kb.is_pressed(','):
             print("Stopping bubble checks...")
             break
 
@@ -62,7 +60,7 @@ def automatedfishing():
             recovery()
             return
 
-        if kb.is_pressed(','):                                          # STOP HOTKEY
+        if kb.is_pressed(','):
             print("Stopping colour checks...")
             break
 
@@ -74,12 +72,12 @@ def automatedfishing():
             ag.click(button='left')
             last_action_time = time.time()
         elif current_color not in (positioncolour, barcolour):
-            time.sleep(2)
+            time.sleep(2)  # Necessary pause before attempting to click again
             ag.click(button='left')
             checkforbubbles()
 
 def startscript():
-    kb.wait(';')                                                        # START HOTKEY
+    kb.wait(';')
     ag.click(button='left')
     checkforbubbles()
 
