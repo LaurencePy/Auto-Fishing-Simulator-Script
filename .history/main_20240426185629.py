@@ -1,5 +1,0 @@
-import pygetwindow as gw
-import keyboard as kb
-import pyautogui as pygetwindow
-
-print(gw.getFocusedWindow())
